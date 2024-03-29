@@ -76,7 +76,7 @@ const getModelYears = (x: GetModelYearsProps): CarYearsForInputItems[] => {
 		case "Rivian":
 			return getModelYearsHelper({currentCarModels: rivianModels, currentModel: model});
 		
-		case "Telsa":
+		case "Tesla":
 			return getModelYearsHelper({currentCarModels: teslaModels, currentModel: model});
 		
 		case 'Ford':

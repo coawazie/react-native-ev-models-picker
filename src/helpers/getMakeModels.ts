@@ -68,7 +68,7 @@ const getMakeModelsHelper = ({currentModels}: { currentModels: CarModelsArray })
 const getMakeModels = (x: GetMakeModelsProps): CarMakeModelsForInputItems[] => {
 	const {carMake} = x;
 	switch (carMake) {
-		case "Telsa":
+		case "Tesla":
 			return getMakeModelsHelper({currentModels: teslaModels});
 		
 		case "Rivian":

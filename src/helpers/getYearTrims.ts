@@ -85,7 +85,7 @@ const getYearTrims = (x: GetYearTrimsProps): CarTrimsForInputType[] => {
 				currentCarModel: carModel
 			});
 		
-		case "Telsa":
+		case "Tesla":
 			return getYearTrimsHelper({
 				currentModels: teslaModels,
 				currentCarYear: carYear,
