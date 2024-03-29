@@ -6,7 +6,7 @@ export type TranslationCopy = {
 	carTrim: string;
 };
 export type CarMake =
-	"Telsa"
+	"Tesla"
 	| "Rivian"
 	| "Ford"
 	| 'Hyundai'
@@ -64,8 +64,8 @@ type CarMakeItemType = {
 };
 export const evMakes: CarMakeItemType[] = [
 	{
-		label: "Telsa",
-		value: "Telsa",
+		label: "Tesla",
+		value: "Tesla",
 		disabled: false
 	},
 	{
