@@ -1,14 +1,19 @@
 import {
 	acuraModels,
 	afeelaModels,
+	alfaRomeoModels,
 	audiModels,
+	bentleyModels,
 	bmwModels,
+	bugattiRimacModels,
 	buickModels,
+	bydMotorsModels,
 	bytonModels,
 	cadillacModels,
 	chevroletModels,
 	chryslerModels,
 	dodgeModels,
+	ferrariModels,
 	fiatModels,
 	fiskerModels,
 	fordModels,
@@ -18,6 +23,8 @@ import {
 	hyundaiModels,
 	jaguarModels,
 	jeepModels,
+	kandiModels,
+	karmaModels,
 	kiaModels,
 	lamborghiniModels,
 	landRoverModels,
@@ -28,6 +35,7 @@ import {
 	lucidModels,
 	maseratiModels,
 	mazdaModels,
+	mclarenModels,
 	mercedesAMGModels,
 	mercedesBenzModels,
 	mercedesMaybachModels,
@@ -41,6 +49,7 @@ import {
 	rollsRoyceModels,
 	scoutModels,
 	smartModels,
+	solectriaModels,
 	subaruModels,
 	teslaModels,
 	toyotaModels,
@@ -341,7 +350,14 @@ const getYearTrims = (x: GetYearTrimsProps): CarTrimsForInputType[] => {
 				currentCarYear: carYear,
 				currentCarModel: carModel
 			})
-		
+
+		case "Kandi":
+			return getYearTrimsHelper({
+				currentModels: kandiModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
 		case "Jeep":
 			return getYearTrimsHelper({
 				currentModels: jeepModels,
@@ -460,7 +476,63 @@ const getYearTrims = (x: GetYearTrimsProps): CarTrimsForInputType[] => {
 				currentCarYear: carYear,
 				currentCarModel: carModel
 			})
-		
+
+		case "Alfa Romeo":
+			return getYearTrimsHelper({
+				currentModels: alfaRomeoModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "Bentley":
+			return getYearTrimsHelper({
+				currentModels: bentleyModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "Bugatti Rimac":
+			return getYearTrimsHelper({
+				currentModels: bugattiRimacModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "BYD Motors":
+			return getYearTrimsHelper({
+				currentModels: bydMotorsModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "Ferrari":
+			return getYearTrimsHelper({
+				currentModels: ferrariModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "Karma":
+			return getYearTrimsHelper({
+				currentModels: karmaModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "McLaren":
+			return getYearTrimsHelper({
+				currentModels: mclarenModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "Solectria":
+			return getYearTrimsHelper({
+				currentModels: solectriaModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
 		case "Others":
 		default:
 			return [];
