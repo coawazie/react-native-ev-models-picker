@@ -1,6 +1,6 @@
 {
   "name": "@coawazie/react-native-ev-models-picker",
-  "version": "0.1.29",
+  "version": "1.0.1",
   "description": "A package to select EV makes, models, years, and trims from a large collection of options",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
