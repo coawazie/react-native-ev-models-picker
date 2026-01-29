@@ -42,6 +42,7 @@
   ],
   "author": "Chinomnso Awazie",
   "license": "MIT",
+  "packageManager": "yarn@4.12.0",
   "bugs": {
     "url": "https://github.com/chinomnsoawazie/react-native-ev-models-picker/issues"
   },
