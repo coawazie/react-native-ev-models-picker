@@ -28,9 +28,9 @@ productivity.
 To install the React Native EV Models Picker, run:
 
 ```
-yarn addadd @coawazie/react-native-ev-models-picker react-native-dropdown-picker  # using yarn
+yarn add @coawazie/react-native-ev-models-picker react-native-dropdown-picker react-native-safe-area-context  # using yarn
 
-npm install add @coawazie/react-native-ev-models-picker react-native-dropdown-picker  # using npm
+npm install @coawazie/react-native-ev-models-picker react-native-dropdown-picker react-native-safe-area-context  # using npm
 ```
 
 # Usage
@@ -38,7 +38,7 @@ npm install add @coawazie/react-native-ev-models-picker react-native-dropdown-pi
 First, import the EVSelector component in your React Native app:
 
 ```typescript tsx
-import {EVSelector} from 'add @coawazie/react-native-ev-models-picker';
+import {EVSelector} from '@coawazie/react-native-ev-models-picker';
 
 ```
 
@@ -46,7 +46,7 @@ Then, use the EVSelector component in your app. Here's a basic example:
 
 ```typescript jsx
 import React, {useState} from 'react';
-import {EVSelector} from 'add @coawazie/react-native-ev-models-picker';
+import {EVSelector} from '@coawazie/react-native-ev-models-picker';
 import {View} from 'react-native';
 
 const App = () => {
@@ -118,7 +118,68 @@ export default App;
 <td>Placeholder string for car trim</td>
 </tr>
 
+<tr>
+<td> <code>language</code> </td>
+<td><code>String</code></td>
+<td><code>"en"</code></td>
+<td>Language for labels. Supported: <code>"en"</code>, <code>"fr"</code></td>
+</tr>
 
+<tr>
+<td> <code>width</code> </td>
+<td><code>Number</code></td>
+<td></td>
+<td>Width of the selector component</td>
+</tr>
+
+<tr>
+<td> <code>backgroundColor</code> </td>
+<td><code>String</code></td>
+<td></td>
+<td>Background color of the dropdowns</td>
+</tr>
+
+<tr>
+<td> <code>fontColor</code> </td>
+<td><code>String</code></td>
+<td></td>
+<td>Font color of the dropdown text</td>
+</tr>
+
+<tr>
+<td> <code>labelColor</code> </td>
+<td><code>String</code></td>
+<td></td>
+<td>Color of the labels above dropdowns</td>
+</tr>
+
+<tr>
+<td> <code>labelFontSize</code> </td>
+<td><code>Number</code></td>
+<td></td>
+<td>Font size of the labels</td>
+</tr>
+
+<tr>
+<td> <code>minHeight</code> </td>
+<td><code>Number</code></td>
+<td></td>
+<td>Minimum height of the dropdowns</td>
+</tr>
+
+<tr>
+<td> <code>borderColor</code> </td>
+<td><code>String</code></td>
+<td></td>
+<td>Border color of the dropdowns</td>
+</tr>
+
+<tr>
+<td> <code>disabled</code> </td>
+<td><code>Boolean</code></td>
+<td><code>false</code></td>
+<td>Disables all dropdowns when true</td>
+</tr>
 
 </table>
 
@@ -137,43 +198,43 @@ export default App;
 </tr>
 <tr>
 <td> <code>onCarMakeOpen</code> </td>
-<td><code>Function</td>
-<td>Callback that is called car make selection dropdown opens</td>
+<td><code>Function</code></td>
+<td>Callback that is called when car make selection dropdown opens</td>
 </tr>
 <tr>
 <td> <code>onCarMakeClose</code> </td>
-<td><code>Function</td>
-<td>Callback that is called car make selection dropdown closes</td>
+<td><code>Function</code></td>
+<td>Callback that is called when car make selection dropdown closes</td>
 </tr>
 <tr>
 <td> <code>onCarModelOpen</code> </td>
-<td><code>Function</td>
-<td>Callback that is called car model selection dropdown opens</td>
+<td><code>Function</code></td>
+<td>Callback that is called when car model selection dropdown opens</td>
 </tr>
 <tr>
 <td> <code>onCarModelClose</code> </td>
-<td><code>Function</td>
-<td>Callback that is called car model selection dropdown closes</td>
+<td><code>Function</code></td>
+<td>Callback that is called when car model selection dropdown closes</td>
 </tr>
 <tr>
 <td> <code>onCarYearOpen</code> </td>
-<td><code>Function</td>
-<td>Callback that is called car year selection dropdown opens</td>
+<td><code>Function</code></td>
+<td>Callback that is called when car year selection dropdown opens</td>
 </tr>
 <tr>
 <td> <code>onCarYearClose</code> </td>
-<td><code>Function</td>
-<td>Callback that is called car year selection dropdown closes</td>
+<td><code>Function</code></td>
+<td>Callback that is called when car year selection dropdown closes</td>
 </tr>
 <tr>
 <td> <code>onCarTrimOpen</code> </td>
-<td><code>Function</td>
-<td>Callback that is called car trim selection dropdown opens</td>
+<td><code>Function</code></td>
+<td>Callback that is called when car trim selection dropdown opens</td>
 </tr>
 <tr>
 <td> <code>onCarTrimClose</code> </td>
-<td><code>Function</td>
-<td>Callback that is called car trim selection dropdown closes</td>
+<td><code>Function</code></td>
+<td>Callback that is called when car trim selection dropdown closes</td>
 </tr>
 
 </table>
