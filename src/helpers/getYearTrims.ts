@@ -1,14 +1,19 @@
 import {
 	acuraModels,
 	afeelaModels,
+	alfaRomeoModels,
 	audiModels,
+	bentleyModels,
 	bmwModels,
+	bugattiRimacModels,
 	buickModels,
+	bydMotorsModels,
 	bytonModels,
 	cadillacModels,
 	chevroletModels,
 	chryslerModels,
 	dodgeModels,
+	ferrariModels,
 	fiatModels,
 	fiskerModels,
 	fordModels,
@@ -18,6 +23,8 @@ import {
 	hyundaiModels,
 	jaguarModels,
 	jeepModels,
+	kandiModels,
+	karmaModels,
 	kiaModels,
 	lamborghiniModels,
 	landRoverModels,
@@ -28,6 +35,7 @@ import {
 	lucidModels,
 	maseratiModels,
 	mazdaModels,
+	mclarenModels,
 	mercedesAMGModels,
 	mercedesBenzModels,
 	mercedesMaybachModels,
@@ -41,26 +49,56 @@ import {
 	rollsRoyceModels,
 	scoutModels,
 	smartModels,
+	solectriaModels,
 	subaruModels,
 	teslaModels,
 	toyotaModels,
 	vinFastModels,
 	volkswagenModels,
 	volvoModels
-} from "../types/evData";
-import {CarMake, CarModelsArray, CarModelsType, CarTrimsForInputType, CarYearsType} from "../types/evDataTypes";
+} from "../typesEnumsInterfacesConsts/constants/carModelsInputItems";
+import {CarTrimsForInputType} from "../typesEnumsInterfacesConsts/interfaces/inputInterfaces";
 
+import {CarMake} from "../typesEnumsInterfacesConsts/types";
+import {CarModelsArray} from "../typesEnumsInterfacesConsts/types/inputTypes";
+import {CarModelsType} from "../typesEnumsInterfacesConsts/types/modelTypes";
+import {CarYearsType} from "../typesEnumsInterfacesConsts/types/yearTypes";
+
+/**
+ * @description Props for the getYearTrims function.
+ * @property {CarMake} carMake - The car manufacturer/make (e.g., "Tesla", "Ford", "BMW").
+ * @property {CarModelsType} carModel - The specific car model name (e.g., "Model 3", "Mustang Mach-E").
+ * @property {CarYearsType} carYear - The model year to retrieve trims for (e.g., "2023", "2024").
+ */
 type GetYearTrimsProps = {
 	carMake: CarMake;
 	carModel: CarModelsType;
 	carYear: CarYearsType;
 };
 
-const getYearTrimsHelper = ({currentCarYear, currentModels, currentCarModel}: {
-	currentCarYear: CarYearsType
-	currentModels: CarModelsArray
-	currentCarModel: CarModelsType
-}): CarTrimsForInputType[] =>
+/**
+ * @description Helper type for getYearTrimsHelper function parameters.
+ * @property {CarYearsType} currentCarYear - The model year to find trims for.
+ * @property {CarModelsArray} currentModels - Array of car models for a specific manufacturer.
+ * @property {CarModelsType} currentCarModel - The specific model to find trims for.
+ */
+type GetYearTrimsHelperProps = {
+	currentCarYear: CarYearsType;
+	currentModels: CarModelsArray;
+	currentCarModel: CarModelsType;
+};
+
+/**
+ * @description Extracts and formats available trim levels for a specific car model and year.
+ * Finds the matching model in the models array, locates the specific year,
+ * extracts its trim options, sorts them alphabetically, and formats them for dropdown/picker input items.
+ * @param {GetYearTrimsHelperProps} params - The helper function parameters.
+ * @param {CarYearsType} params.currentCarYear - The model year to find trims for.
+ * @param {CarModelsArray} params.currentModels - Array of car models for the manufacturer.
+ * @param {CarModelsType} params.currentCarModel - The specific model to find trims for.
+ * @returns {CarTrimsForInputType[]} Array of trim items formatted for input components with label and value properties.
+ */
+const getYearTrimsHelper = ({currentCarYear, currentModels, currentCarModel}: GetYearTrimsHelperProps): CarTrimsForInputType[] =>
 	currentModels.find(
 		(model) => model.model === currentCarModel
 	)?.yearTrims
@@ -75,6 +113,24 @@ const getYearTrimsHelper = ({currentCarYear, currentModels, currentCarModel}: {
 		}) as CarTrimsForInputType[]
 
 
+/**
+ * @description Retrieves available trim levels for a specific EV make, model, and year combination.
+ * Maps the car make to its corresponding models data and delegates to the helper function
+ * to extract and format the trims for that specific model and year.
+ * @param {GetYearTrimsProps} x - The function parameters.
+ * @param {CarMake} x.carMake - The car manufacturer/make.
+ * @param {CarModelsType} x.carModel - The specific car model name.
+ * @param {CarYearsType} x.carYear - The model year to retrieve trims for.
+ * @returns {CarTrimsForInputType[]} Array of trim items formatted for picker/dropdown components.
+ * Returns an empty array if the make is "Others" or not recognized.
+ * @example
+ * // Get available trims for 2023 Tesla Model 3
+ * const trims = getYearTrims({ carMake: "Tesla", carModel: "Model 3", carYear: "2023" });
+ * // Returns: [{ label: "Long Range", value: "Long Range" }, { label: "Performance", value: "Performance" }, ...]
+ * @example
+ * // Get available trims for 2024 Ford Mustang Mach-E
+ * const trims = getYearTrims({ carMake: "Ford", carModel: "Mustang Mach-E", carYear: "2024" });
+ */
 const getYearTrims = (x: GetYearTrimsProps): CarTrimsForInputType[] => {
 	const {carMake, carModel, carYear} = x;
 	switch (carMake) {
@@ -294,7 +350,14 @@ const getYearTrims = (x: GetYearTrimsProps): CarTrimsForInputType[] => {
 				currentCarYear: carYear,
 				currentCarModel: carModel
 			})
-		
+
+		case "Kandi":
+			return getYearTrimsHelper({
+				currentModels: kandiModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
 		case "Jeep":
 			return getYearTrimsHelper({
 				currentModels: jeepModels,
@@ -413,7 +476,63 @@ const getYearTrims = (x: GetYearTrimsProps): CarTrimsForInputType[] => {
 				currentCarYear: carYear,
 				currentCarModel: carModel
 			})
-		
+
+		case "Alfa Romeo":
+			return getYearTrimsHelper({
+				currentModels: alfaRomeoModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "Bentley":
+			return getYearTrimsHelper({
+				currentModels: bentleyModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "Bugatti Rimac":
+			return getYearTrimsHelper({
+				currentModels: bugattiRimacModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "BYD Motors":
+			return getYearTrimsHelper({
+				currentModels: bydMotorsModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "Ferrari":
+			return getYearTrimsHelper({
+				currentModels: ferrariModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "Karma":
+			return getYearTrimsHelper({
+				currentModels: karmaModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "McLaren":
+			return getYearTrimsHelper({
+				currentModels: mclarenModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
+		case "Solectria":
+			return getYearTrimsHelper({
+				currentModels: solectriaModels,
+				currentCarYear: carYear,
+				currentCarModel: carModel
+			})
+
 		case "Others":
 		default:
 			return [];

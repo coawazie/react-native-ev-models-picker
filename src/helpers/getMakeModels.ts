@@ -1,14 +1,19 @@
 import {
 	acuraModels,
 	afeelaModels,
+	alfaRomeoModels,
 	audiModels,
+	bentleyModels,
 	bmwModels,
+	bugattiRimacModels,
 	buickModels,
+	bydMotorsModels,
 	bytonModels,
 	cadillacModels,
 	chevroletModels,
 	chryslerModels,
 	dodgeModels,
+	ferrariModels,
 	fiatModels,
 	fiskerModels,
 	fordModels,
@@ -18,6 +23,8 @@ import {
 	hyundaiModels,
 	jaguarModels,
 	jeepModels,
+	kandiModels,
+	karmaModels,
 	kiaModels,
 	lamborghiniModels,
 	landRoverModels,
@@ -28,6 +35,7 @@ import {
 	lucidModels,
 	maseratiModels,
 	mazdaModels,
+	mclarenModels,
 	mercedesAMGModels,
 	mercedesBenzModels,
 	mercedesMaybachModels,
@@ -41,21 +49,45 @@ import {
 	rollsRoyceModels,
 	scoutModels,
 	smartModels,
+	solectriaModels,
 	subaruModels,
 	teslaModels,
 	toyotaModels,
 	vinFastModels,
 	volkswagenModels,
 	volvoModels
-} from "../types/evData";
-import {CarMake, CarMakeModelsForInputItems, CarModelsArray} from "../types/evDataTypes";
+} from "../typesEnumsInterfacesConsts/constants/carModelsInputItems";
+import {CarMakeModelsForInputItems} from "../typesEnumsInterfacesConsts/interfaces/inputInterfaces";
+import {CarMake} from "../typesEnumsInterfacesConsts/types";
+import {CarModelsArray} from "../typesEnumsInterfacesConsts/types/inputTypes";
 
 
+/**
+ * @description Props for the getMakeModels function.
+ * @property {CarMake} carMake - The car manufacturer/make to retrieve models for (e.g., "Tesla", "Ford", "BMW").
+ */
 type GetMakeModelsProps = {
 	carMake: CarMake;
 };
 
-const getMakeModelsHelper = ({currentModels}: { currentModels: CarModelsArray }): CarMakeModelsForInputItems[] =>
+/**
+ * @description Helper type for getMakeModelsHelper function parameters.
+ * @property {CarModelsArray} currentModels - Array of car models for a specific manufacturer.
+ */
+type GetMakeModelsHelperProps = {
+	currentModels: CarModelsArray;
+};
+
+/**
+ * @description Sorts and formats car models for dropdown/picker input items.
+ * Takes an array of car models, sorts them alphabetically by model name,
+ * and transforms them into a format suitable for input components.
+ * @param {GetMakeModelsHelperProps} params - The helper function parameters.
+ * @param {CarModelsArray} params.currentModels - Array of car models to process.
+ * @returns {CarMakeModelsForInputItems[]} Array of model items formatted for input components with label and value
+ *   properties.
+ */
+const getMakeModelsHelper = ({currentModels}: GetMakeModelsHelperProps): CarMakeModelsForInputItems[] =>
 	currentModels.sort(function (a, b) {return a.model.localeCompare(b.model)})
 		.map((model) => {
 			return {
@@ -65,6 +97,24 @@ const getMakeModelsHelper = ({currentModels}: { currentModels: CarModelsArray })
 		});
 
 
+/**
+ * @description Retrieves all available EV models for a specific car manufacturer.
+ * Maps the car make to its corresponding models data and formats them for use
+ * in picker/dropdown components. Models are sorted alphabetically by name.
+ * @param {GetMakeModelsProps} x - The function parameters.
+ * @param {CarMake} x.carMake - The car manufacturer/make to retrieve models for.
+ * @returns {CarMakeModelsForInputItems[]} Array of model items formatted for picker/dropdown components.
+ * Returns an empty array if the make is "Others" or not recognized.
+ * @example
+ * // Get all Tesla models
+ * const models = getMakeModels({ carMake: "Tesla" });
+ * // Returns: [{ label: "Model 3", value: "Model 3" }, { label: "Model S", value: "Model S" }, ...]
+ * @example
+ * // Get all Ford EV models
+ * const models = getMakeModels({ carMake: "Ford" });
+ * // Returns: [{ label: "F-150 Lightning", value: "F-150 Lightning" }, { label: "Mustang Mach-E", value: "Mustang
+ *   Mach-E" }, ...]
+ */
 const getMakeModels = (x: GetMakeModelsProps): CarMakeModelsForInputItems[] => {
 	const {carMake} = x;
 	switch (carMake) {
@@ -211,6 +261,29 @@ const getMakeModels = (x: GetMakeModelsProps): CarMakeModelsForInputItems[] => {
 		
 		case "Afeela":
 			return getMakeModelsHelper({currentModels: afeelaModels});
+		
+		case "Alfa Romeo":
+			return getMakeModelsHelper({currentModels: alfaRomeoModels});
+		
+		case "Bentley":
+			return getMakeModelsHelper({currentModels: bentleyModels});
+		
+		case "Bugatti Rimac":
+			return getMakeModelsHelper({currentModels: bugattiRimacModels});
+		
+		case "BYD Motors":
+			return getMakeModelsHelper({currentModels: bydMotorsModels});
+		
+		case "Ferrari":
+			return getMakeModelsHelper({currentModels: ferrariModels});
+		case "Kandi":
+			return getMakeModelsHelper({currentModels: kandiModels});
+		case "Karma":
+			return getMakeModelsHelper({currentModels: karmaModels});
+		case "McLaren":
+			return getMakeModelsHelper({currentModels: mclarenModels});
+		case "Solectria":
+			return getMakeModelsHelper({currentModels: solectriaModels});
 		
 		case "Others":
 		default:

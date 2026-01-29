@@ -1,14 +1,19 @@
 import {
 	acuraModels,
 	afeelaModels,
+	alfaRomeoModels,
 	audiModels,
+	bentleyModels,
 	bmwModels,
+	bugattiRimacModels,
 	buickModels,
+	bydMotorsModels,
 	bytonModels,
 	cadillacModels,
 	chevroletModels,
 	chryslerModels,
 	dodgeModels,
+	ferrariModels,
 	fiatModels,
 	fiskerModels,
 	fordModels,
@@ -18,6 +23,8 @@ import {
 	hyundaiModels,
 	jaguarModels,
 	jeepModels,
+	kandiModels,
+	karmaModels,
 	kiaModels,
 	lamborghiniModels,
 	landRoverModels,
@@ -28,6 +35,7 @@ import {
 	lucidModels,
 	maseratiModels,
 	mazdaModels,
+	mclarenModels,
 	mercedesAMGModels,
 	mercedesBenzModels,
 	mercedesMaybachModels,
@@ -41,25 +49,50 @@ import {
 	rollsRoyceModels,
 	scoutModels,
 	smartModels,
+	solectriaModels,
 	subaruModels,
 	teslaModels,
 	toyotaModels,
 	vinFastModels,
 	volkswagenModels,
 	volvoModels
-} from "../types/evData";
-import {CarMake, CarModelsArray, CarModelsType, CarYearsForInputItems} from "../types/evDataTypes";
+} from "../typesEnumsInterfacesConsts/constants/carModelsInputItems";
+import {CarYearsForInputItems} from "../typesEnumsInterfacesConsts/interfaces/inputInterfaces";
+import {CarMake} from "../typesEnumsInterfacesConsts/types";
+import {CarModelsArray} from "../typesEnumsInterfacesConsts/types/inputTypes";
+import {CarModelsType} from "../typesEnumsInterfacesConsts/types/modelTypes";
 
 
-type GetModelYearsProps = {
+/**
+ * @description Props for the getModelYears function.
+ * @property {CarMake} make - The car manufacturer/make (e.g., "Tesla", "Ford", "BMW").
+ * @property {CarModelsType} model - The specific car model name (e.g., "Model 3", "Mustang Mach-E").
+ */
+interface GetModelYearsProps {
 	make: CarMake;
 	model: CarModelsType;
-};
+}
 
-const getModelYearsHelper = ({currentCarModels, currentModel}: {
-	currentCarModels: CarModelsArray,
-	currentModel: CarModelsType
-}): CarYearsForInputItems[] => currentCarModels.find((modelItem) => modelItem.model === currentModel)
+/**
+ * @description Helper interface for getModelYearsHelper function parameters.
+ * @property {CarModelsArray} currentCarModels - Array of car models for a specific manufacturer.
+ * @property {CarModelsType} currentModel - The specific model to find years for.
+ */
+interface GetModelYearsHelperProps {
+	currentCarModels: CarModelsArray;
+	currentModel: CarModelsType;
+}
+
+/**
+ * @description Extracts and formats available years for a specific car model.
+ * Finds the matching model in the models array, extracts its year/trim data,
+ * sorts the years alphabetically, and formats them for dropdown/picker input items.
+ * @param {GetModelYearsHelperProps} params - The helper function parameters.
+ * @param {CarModelsArray} params.currentCarModels - Array of car models for the manufacturer.
+ * @param {CarModelsType} params.currentModel - The specific model to find years for.
+ * @returns {CarYearsForInputItems[]} Array of year items formatted for input components with label and value properties.
+ */
+const getModelYearsHelper = ({currentCarModels, currentModel}: GetModelYearsHelperProps): CarYearsForInputItems[] => currentCarModels.find((modelItem) => modelItem.model === currentModel)
 	?.yearTrims
 	.sort(function (a, b) {return a.year.localeCompare(b.year)})
 	.map((yearItem) => {
@@ -70,7 +103,25 @@ const getModelYearsHelper = ({currentCarModels, currentModel}: {
 	}) as CarYearsForInputItems[];
 
 
+/**
+ * @description Retrieves available model years for a specific EV make and model combination.
+ * Maps the car make to its corresponding models data and delegates to the helper function
+ * to extract and format the years for that specific model.
+ * @param {GetModelYearsProps} x - The function parameters.
+ * @param {CarMake} x.make - The car manufacturer/make.
+ * @param {CarModelsType} x.model - The specific car model name.
+ * @returns {CarYearsForInputItems[]} Array of year items formatted for picker/dropdown components.
+ * Returns an empty array if the make is "Others" or not recognized.
+ * @example
+ * // Get available years for Tesla Model 3
+ * const years = getModelYears({ make: "Tesla", model: "Model 3" });
+ * // Returns: [{ label: "2019", value: "2019" }, { label: "2020", value: "2020" }, ...]
+ * @example
+ * // Get available years for Ford Mustang Mach-E
+ * const years = getModelYears({ make: "Ford", model: "Mustang Mach-E" });
+ */
 const getModelYears = (x: GetModelYearsProps): CarYearsForInputItems[] => {
+	
 	const {make, model} = x;
 	switch (make) {
 		case "Rivian":
@@ -166,7 +217,10 @@ const getModelYears = (x: GetModelYearsProps): CarYearsForInputItems[] => {
 		
 		case "Kia":
 			return getModelYearsHelper({currentCarModels: kiaModels, currentModel: model});
-		
+
+		case "Kandi":
+			return getModelYearsHelper({currentCarModels: kandiModels, currentModel: model});
+
 		case "Jeep":
 			return getModelYearsHelper({currentCarModels: jeepModels, currentModel: model});
 		
@@ -217,7 +271,31 @@ const getModelYears = (x: GetModelYearsProps): CarYearsForInputItems[] => {
 		
 		case "Afeela":
 			return getModelYearsHelper({currentCarModels: afeelaModels, currentModel: model});
-		
+
+		case "Alfa Romeo":
+			return getModelYearsHelper({currentCarModels: alfaRomeoModels, currentModel: model});
+
+		case "Bentley":
+			return getModelYearsHelper({currentCarModels: bentleyModels, currentModel: model});
+
+		case "Bugatti Rimac":
+			return getModelYearsHelper({currentCarModels: bugattiRimacModels, currentModel: model});
+
+		case "BYD Motors":
+			return getModelYearsHelper({currentCarModels: bydMotorsModels, currentModel: model});
+
+		case "Ferrari":
+			return getModelYearsHelper({currentCarModels: ferrariModels, currentModel: model});
+
+		case "Karma":
+			return getModelYearsHelper({currentCarModels: karmaModels, currentModel: model});
+
+		case "McLaren":
+			return getModelYearsHelper({currentCarModels: mclarenModels, currentModel: model});
+
+		case "Solectria":
+			return getModelYearsHelper({currentCarModels: solectriaModels, currentModel: model});
+
 		case "Others":
 		default:
 			return [];
