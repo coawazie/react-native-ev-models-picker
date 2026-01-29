@@ -398,7 +398,10 @@ __metadata:
     "@types/jest": "npm:^30.0.0"
     "@types/react": "npm:^19.2.9"
     jest: "npm:^30.2.0"
+    react: "npm:^19.0.0"
     react-native: "npm:^0.83.1"
+    react-native-dropdown-picker: "npm:^5.4.6"
+    react-native-safe-area-context: "npm:^5.4.0"
     react-test-renderer: "npm:^19.0.0"
     ts-jest: "npm:^29.4.6"
     typescript: "npm:^5.9.3"
@@ -4392,6 +4395,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-dropdown-picker@npm:^5.4.6":
+  version: 5.4.6
+  resolution: "react-native-dropdown-picker@npm:5.4.6"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/29b29d6168dc71386a0fd9dc5dedebd23cbb7baa977e4f37f6ff6fd13a800628e73e6624d0563b7471cec9a5dd76e196aed0e41d2da4bac8abefacbd1f0eb347
+  languageName: node
+  linkType: hard
+
+"react-native-safe-area-context@npm:^5.4.0":
+  version: 5.6.2
+  resolution: "react-native-safe-area-context@npm:5.6.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/3c8df21a1dbac83116b9c9bd5d20b7c1bb7649ecef44a111af6fb6b237241f5f4d692189eec30a69f5701b857249257da3621b9e17165460a2bb71faac7b92ae
+  languageName: node
+  linkType: hard
+
 "react-native@npm:^0.83.1":
   version: 0.83.1
   resolution: "react-native@npm:0.83.1"
@@ -4459,6 +4482,13 @@ __metadata:
   peerDependencies:
     react: ^19.2.4
   checksum: 10c0/76f0a419a8ca7776ac6fae7c25056b9326a92a3d79971817e8ffd262d9121d1e87fde058b4fd6d33c365b1001cd6236d9053816dabed20afa62fbfe2a1a59f1a
+  languageName: node
+  linkType: hard
+
+"react@npm:^19.0.0":
+  version: 19.2.4
+  resolution: "react@npm:19.2.4"
+  checksum: 10c0/cd2c9ff67a720799cc3b38a516009986f7fc4cb8d3e15716c6211cf098d1357ee3e348ab05ad0600042bbb0fd888530ba92e329198c92eafa0994f5213396596
   languageName: node
   linkType: hard
 
