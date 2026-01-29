@@ -11,7 +11,7 @@ module.exports = {
 
   // Transform TypeScript files using ts-jest
   transform: {
-    '^.+\\.tsx?$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
+    '^.+\\.tsx?$': ['ts-jest', { tsconfig: 'tsconfig.jest.json' }],
   },
 
   // File extensions to consider
@@ -28,6 +28,7 @@ module.exports = {
 
   // Module path aliases matching tsconfig
   moduleNameMapper: {
+    '^react-native$': '<rootDir>/__tests__/__mocks__/react-native.js',
     '^@/(.*)$': '<rootDir>/src/$1',
   },
 

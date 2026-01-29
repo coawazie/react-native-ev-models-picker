@@ -184,6 +184,11 @@ const evMakes: CarMakeItemType[] = [
 		disabled: false
 	},
 	{
+		label: "Kandi",
+		value: "Kandi",
+		disabled: false
+	},
+	{
 		label: "Karma",
 		value: "Karma",
 		disabled: false
