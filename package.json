@@ -1,41 +1,69 @@
 {
   "name": "@coawazie/react-native-ev-models-picker",
-  "version": "0.1.28",
+  "version": "0.1.29",
   "description": "A package to select EV makes, models, years, and trims from a large collection of options",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "react-native": "index.ts",
+  "source": "index.ts",
+  "files": [
+    "dist",
+    "src",
+    "index.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
   "scripts": {
-	"test": "test",
-	"build": "tsc",
-	"prepublishOnly": "npm run build"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
-	"type": "git",
-	"url": "git+https://github.com/chinomnsoawazie/react-native-ev-models-picker.git"
+    "type": "git",
+    "url": "git+https://github.com/chinomnsoawazie/react-native-ev-models-picker.git"
   },
   "keywords": [
-	"evs",
-	"ev",
-	"ev-makes",
-	"ev-models",
-	"electric-vehicle",
-	"ev-cars",
-	"electric-vehicles",
-	"vehicles"
+    "evs",
+    "ev",
+    "ev-makes",
+    "ev-models",
+    "electric-vehicle",
+    "ev-cars",
+    "electric-vehicles",
+    "vehicles",
+    "typescript",
+    "react-native"
   ],
   "author": "Chinomnso Awazie",
   "license": "MIT",
   "bugs": {
-	"url": "https://github.com/chinomnsoawazie/react-native-ev-models-picker/issues"
+    "url": "https://github.com/chinomnsoawazie/react-native-ev-models-picker/issues"
   },
   "homepage": "https://github.com/chinomnsoawazie/react-native-ev-models-picker#readme",
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-native": ">=0.73.0"
+  },
   "dependencies": {
-	"react-native-dropdown-picker": "^5.4.6"
+    "react-native-dropdown-picker": "^5.4.6",
+    "react-native-safe-area-context": "^5.6.2"
   },
   "devDependencies": {
-	"@tsconfig/react-native": "^3.0.3",
-	"@types/react": "^18.2.66",
-	"@types/react-native": "^0.73.0",
-	"jest": "^29.7.0",
-	"typescript": "^5.4.2"
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^13.0.0",
+    "@tsconfig/react-native": "^3.0.9",
+    "@types/jest": "^30.0.0",
+    "@types/react": "^19.2.9",
+    "jest": "^30.2.0",
+    "react-native": "^0.83.1",
+    "react-test-renderer": "^19.0.0",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3"
   }
 }

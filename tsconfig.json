@@ -5,7 +5,12 @@
 	"sourceMap": true,
 	"esModuleInterop": true,
 	"strict": true,
-	"noEmit": true,
+	"noEmit": false,
+	"outDir": "./dist",
+	"rootDir": ".",
+	"declaration": true,
+	"declarationMap": true,
+	"jsx": "react-native",
 	"noUnusedParameters": true,
 	"noUnusedLocals": true,
 	"removeComments": true,
@@ -17,15 +22,17 @@
 	"module": "commonjs",
 	"moduleResolution": "node",
 	"target": "es6",
-	"declaration": true,
 	"resolveJsonModule": true,
 	"lib": [
 	  "dom",
 	  "esnext"
-	],
+	]
   },
+  "include": ["index.ts", "src/**/*"],
   "exclude": [
 	"node_modules",
+	"dist",
+	"__tests__",
 	"babel.config.js",
 	"metro.config.js",
 	"jest.config.js"
